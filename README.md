@@ -3,7 +3,7 @@ Drupal Demo Stack
 
 ## Running Locally
 
-Use `docker-compose` to stand up the stack locally and listen on port 89
+Use `docker-compose` to stand up the stack locally and listen on port 80
 
 ```
 docker-compose up
