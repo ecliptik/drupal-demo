@@ -1,0 +1,29 @@
+drupal:
+  image: ecliptik/drupal-demo
+  ports:
+    - "23000:80"
+  links:
+    - fpm
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+fpm:
+  image: drupal:7.50-fpm
+  environment:
+    - MYSQL_DATABASE=drupal
+  links:
+    - mysql:mysql
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+mysql:
+  image: mysql:5.5
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    - MYSQL_DATABASE=drupal
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
